@@ -1,0 +1,17 @@
+{
+  "name": "ansys-scripting-cookbook",
+  "version": "1.0.0",
+  "description": "Ansys製品（Workbench, Mechanical, SpaceClaim）の自動化に必要な実用的なスクリプトと開発ノウハウを集約したリポジトリ",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0",
+    "vue": "^3.3.4"
+  },
+  "license": "MIT"
+}
+
