@@ -175,6 +175,13 @@ with open(output_path, "w") as f:
         f.write("{},{}\n".format(body.Name, body.Material))
 ```
 
+#### モデルを CDB (MAPDL) 形式でエクスポートしたい
+
+```python
+analysis = Model.Analyses[0]
+analysis.ExportMechanicalData(r"C:\temp\model.cdb")
+```
+
 ---
 
 ## ✏️ SpaceClaim 編
@@ -232,6 +239,21 @@ DocumentInsert.Execute(r"C:\path\to\file.step", options)
 ```python
 options = ExportOptions.Create()
 DocumentSave.Execute(r"C:\path\to\output.scdocx", options)
+```
+
+#### サーフェス（シェル）を厚み付けしてソリッド化したい
+
+```python
+# 全サーフェスを選択
+surfaces = [b for b in GetRootPart().Bodies if b.Shape.IsSurface]
+selection = Selection.Create(surfaces)
+
+# 厚み付けオプション
+options = ThickenOptions()
+options.ThickenBothSides = True # 両側にオフセット
+
+# 2.0 mm の厚み付けを実行
+Thicken.Execute(selection, MM(2.0), options)
 ```
 
 ---

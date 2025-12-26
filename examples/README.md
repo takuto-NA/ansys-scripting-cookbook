@@ -11,6 +11,10 @@
   - `DataModel.GetObjectsByType` の使い方
   - エラーハンドリングの基本
 
+### ワークフロー例
+
+- **[workflow_step_to_cdb.wbjn](./workflow_step_to_cdb.wbjn)**: STEP インポートからメッシュ作成、CDB エクスポートまでを一括自動化する Workbench ジャーナル。
+
 ## 🎯 使い方
 
 1. **Ansys 製品を起動**（Mechanical, SpaceClaim, Workbench など）
