@@ -47,79 +47,39 @@ export default defineConfig({
       ],
 
       '/mechanical/': [
-        {
-          text: 'Mechanical スクリプト',
-          items: [
-            { text: '概要', link: '/mechanical/' },
-            { text: 'ジオメトリ', link: '/mechanical/geometry/' },
-            { text: 'メッシュ', link: '/mechanical/mesh/' },
-            { text: '境界条件', link: '/mechanical/boundary-cond/' },
-            { text: '後処理', link: '/mechanical/post-processing/' }
-          ]
-        }
+        { text: 'Mechanical スクリプト', link: '/mechanical/' },
+        { text: 'ジオメトリ', link: '/mechanical/geometry/' },
+        { text: 'メッシュ', link: '/mechanical/mesh/' },
+        { text: '境界条件', link: '/mechanical/boundary-cond/' },
+        { text: '後処理', link: '/mechanical/post-processing/' }
       ],
 
       '/spaceclaim/': [
-        {
-          text: 'SpaceClaim スクリプト',
-          items: [
-            { text: '概要', link: '/spaceclaim/' },
-            { text: 'モデリング', link: '/spaceclaim/modeling/' },
-            { text: 'Named Selection', link: '/spaceclaim/named-selection/' }
-          ]
-        }
+        { text: 'SpaceClaim スクリプト', link: '/spaceclaim/' },
+        { text: 'モデリング', link: '/spaceclaim/modeling/' },
+        { text: 'Named Selection', link: '/spaceclaim/named-selection/' }
       ],
 
       '/workbench/': [
-        {
-          text: 'Workbench Journal',
-          items: [
-            { text: '概要', link: '/workbench/' },
-            { text: '基本操作', link: '/workbench/basic-ops/' },
-            { text: 'プロジェクト更新', link: '/workbench/project-update/' }
-          ]
-        }
+        { text: 'Workbench Journal', link: '/workbench/' },
+        { text: '基本操作', link: '/workbench/basic-ops/' },
+        { text: 'プロジェクト更新', link: '/workbench/project-update/' }
       ],
 
       '/interop/': [
-        {
-          text: 'ツール間連携',
-          items: [
-            { text: '概要', link: '/interop/' },
-            {
-              text: 'STEP Import Tricks',
-              items: [
-                { text: 'Color to Named Selection', link: '/interop/step-import-trick/color_named_selection' }
-              ]
-            },
-            {
-              text: 'Workbench to Mechanical',
-              items: [
-                { text: 'Pass Parameters', link: '/interop/wb-to-mech/pass_parameters' }
-              ]
-            }
-          ]
-        }
+        { text: 'ツール間連携', link: '/interop/' },
+        { text: 'Color to Named Selection', link: '/interop/step-import-trick/color_named_selection' },
+        { text: 'Pass Parameters', link: '/interop/wb-to-mech/pass_parameters' }
       ],
 
       '/examples/': [
-        {
-          text: '統合サンプル',
-          items: [
-            { text: '概要', link: '/examples/' },
-            { text: 'Rhino to CDB Workflow', link: '/examples/rhino_to_cdb_workflow' },
-            { text: 'Rhino to Analysis Pipeline', link: '/examples/rhino_to_analysis_pipeline' }
-          ]
-        }
+        { text: '統合サンプル', link: '/examples/' },
+        { text: 'Rhino to CDB Workflow', link: '/examples/rhino_to_cdb_workflow' },
+        { text: 'Rhino to Analysis Pipeline', link: '/examples/rhino_to_analysis_pipeline' }
       ],
 
       '/common-snippets/': [
-        {
-          text: '共通スニペット',
-          items: [
-            { text: '概要', link: '/common-snippets/' }
-          ]
-        }
+        { text: '共通スニペット', link: '/common-snippets/' }
       ],
 
       '/': [
