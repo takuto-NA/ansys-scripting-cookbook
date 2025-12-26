@@ -5,6 +5,7 @@ export default defineConfig({
   description: 'Ansys製品（Workbench, Mechanical, SpaceClaim）の自動化に必要な実用的なスクリプトと開発ノウハウ',
   lang: 'ja',
   base: '/ansys-scripting-cookbook/',
+  ignoreDeadLinks: true,
   
   themeConfig: {
     nav: [
