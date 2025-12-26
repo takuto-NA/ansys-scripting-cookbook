@@ -25,19 +25,16 @@ geometry = system.GetContainer(ComponentName="Geometry")
 geometry.SetFile(FilePath=step_file)
 
 # 3. Edit Model (Mechanical) and perform operations via ACT
-# We use a 'Command' or just update the system.
-# To automate Mechanical internally, we can use a script file.
-
-# For simplicity, we can update the model which triggers default meshing
 model = system.GetContainer(ComponentName="Model")
 model.Edit()
 
-# In a real automated scenario, you would pass a script to Mechanical
-# model.SendCommand(Language='Python', Command='...') 
-# But here we show the high-level flow.
-
-# Generate Mesh
-model.Update()
+# Generate Mesh with specific size
+# We use SendCommand to set the element size before updating
+mesh_script = """
+Model.Mesh.ElementSize = Quantity("5.0 [mm]")
+Model.Mesh.GenerateMesh()
+"""
+model.SendCommand(Language='Python', Command=mesh_script)
 
 # 4. Export to CDB
 # This part is often done by a script inside Mechanical.

@@ -33,6 +33,7 @@ force.Magnitude.Output.SetData("100 [N]")
 ## 📂 フォルダ構成
 
 - **[geometry/](./geometry/)**: ジオメトリの操作、Named Selection の作成など。
+- **[mesh/](./mesh/)**: メッシュサイズの設定、ローカルサイズコントロール。
 - **[boundary-cond/](./boundary-cond/)**: 境界条件の設定、材料の割り当て。
   - **[batch_assign_materials.py](./boundary-cond/batch_assign_materials.py)**: ボディ名に基づいた材料の一括割り当て。
 - **[post-processing/](./post-processing/)**: 結果の抽出、レポート作成。

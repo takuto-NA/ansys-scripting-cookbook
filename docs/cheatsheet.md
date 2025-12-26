@@ -104,7 +104,47 @@ except:
 
 ---
 
-### 境界条件
+### メッシュ
+
+#### グローバルメッシュサイズを設定したい
+
+```python
+mesh = Model.Mesh
+mesh.ElementSize = Quantity("5.0 [mm]")
+mesh.GenerateMesh()
+```
+
+#### 特定の Named Selection にローカルサイズを設定したい
+
+```python
+ns = DataModel.GetObjectsByName("NS_MyPart")[0]
+sizing = Model.Mesh.AddSizing()
+sizing.Location = ns
+sizing.ElementSize = Quantity("1.0 [mm]")
+```
+
+#### 条件（面積など）で面を抽出してメッシュサイズを設定したい
+
+```python
+# 面積が 10mm^2 未満の面 ID を取得
+small_face_ids = []
+for body in DataModel.GetObjectsByType(Ansys.ACT.Automation.Mechanical.Body):
+    for face in body.GetGeoEntity().Faces:
+        if face.Area < 10.0:
+            small_face_ids.append(face.Id)
+
+# Named Selection を作成して Sizing を適用
+ns = Model.AddNamedSelection()
+sel = ExtAPI.SelectionManager.CreateSelectionInfo(SelectionTypeEnum.GeometryEntities)
+sel.Ids = small_face_ids
+ns.Location = sel
+
+sizing = Model.Mesh.AddSizing()
+sizing.Location = ns
+sizing.ElementSize = Quantity("0.5 [mm]")
+```
+
+---
 
 #### 荷重を追加したい
 

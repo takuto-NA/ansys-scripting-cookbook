@@ -59,6 +59,10 @@ ns = DataModel.GetObjectsByName("NS_FixedFaces")[0]
 new_ns = Model.AddNamedSelection()
 new_ns.Name = "MySelection"
 
+# メッシュサイズの変更と生成
+Model.Mesh.ElementSize = Quantity("5 [mm]")
+Model.Mesh.GenerateMesh()
+
 # 解析の追加
 analysis = Model.AddStaticStructuralAnalysis()
 
