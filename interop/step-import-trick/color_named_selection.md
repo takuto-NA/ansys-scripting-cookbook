@@ -2,22 +2,38 @@
 
 CAD 側（CATIA, NX, SolidWorks 等）で部品や面に付けた「色」や「レイヤー」を Mechanical の Named Selection に自動変換するテクニックを解説します。
 
-## 1. なぜこの「裏技」が必要か？
+## 1. 2 つの実現方法
 
-通常、STEP インポートでは CAD 側の名前（Body Name）は引き継げますが、面（Face）レベルの選択セットを維持するのは困難です。
-しかし、**SpaceClaim のスクリプト機能** を介することで、特定の色が付いた面を抽出して Named Selection に変換し、それを Mechanical へ渡すことができます。
+STEP ファイルの色やレイヤー情報を Named Selection (NS) に変換するには、以下の 2 つのアプローチがあります。
 
-## 2. ワークフロー
+### A. 標準機能（インポート設定）を利用する方法
+Mechanical のインポートオプションを設定するだけで、自動的に NS が作成されます。スクリプト不要で最も簡単な方法です。
 
-```mermaid
-graph LR
-    CAD[CAD: 色付け] --> STEP[STEP 出力]
-    STEP --> SC[SpaceClaim: スクリプト実行]
-    SC --> NS[Named Selection 作成]
-    NS --> MECH[Mechanical: 境界条件の自動割当]
-```
+### B. SpaceClaim スクリプトを利用する方法
+より複雑な条件（例：特定の色かつ面積が一定以上など）で NS を作成したい場合に有効です。
 
-## 3. SpaceClaim スクリプト例
+---
+
+## 2. 方法 A: 標準機能での設定 (Mechanical)
+
+Workbench の Geometry コンポーネント、または Mechanical のインポート設定（Details view）で以下の項目を設定します。
+
+| 設定項目 | 値 | 内容 |
+| :--- | :--- | :--- |
+| **Named Selections** | `Yes` | NS のインポートを有効化 |
+| **Named Selections Key** | `Color` | 「色」をキーワードとして NS を作成 |
+
+### 特定の色のみを抽出する場合
+`Named Selections Key` に特定の値を指定することで、必要な色だけを NS 化できます。
+- 例: `Color:255.0.0; Color:0.255.0` (赤と緑のみ)
+
+### レイヤーを利用する場合
+`Named Selections Key` に `Layer` を指定します。
+- 例: `Layer:0; Layer:1`
+
+---
+
+## 3. 方法 B: SpaceClaim スクリプトでの実現
 
 以下のスクリプトを SpaceClaim で実行すると、赤い面（RGB: 255, 0, 0）をすべて選択し、"NS_Load_Face" という名前の Named Selection を作成します。
 

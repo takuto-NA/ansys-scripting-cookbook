@@ -22,8 +22,12 @@ Ansys 独自の API（`DataModel`, `Model`, `Tree` など）は外部の Python 
 
 ### ステップ 1: Stub ファイルの入手
 
-[Ansys-stubs](https://github.com/ansys/pyansys-geometry) (またはプロジェクトに適したスタブ提供元) から、利用したい製品のスタブファイルをダウンロードします。
-※ 一般的には、Mechanical や SpaceClaim の API を模した `.py` ファイル群です。
+Ansys 独自の API を補完するために、以下のいずれかのスタブファイルを入手してください。
+
+- **[ansys-stubs (GitHub)](https://github.com/ansys/ansys-stubs)**: 多くの製品（Mechanical, SpaceClaim, DesignModeler等）の API をカバーしています。
+- **PyAnsys プロジェクト**: 最新の Python API (PyMechanical 等) を使用する場合は、`pip install` で入手可能ですが、本リポジトリのような内部スクリプト開発には上記のスタブが適しています。
+
+ダウンロードした `ansys-stubs` フォルダ（または特定の製品フォルダ）をプロジェクト内に配置するか、任意の場所に保存します。
 
 ### ステップ 2: settings.json の編集
 
@@ -32,14 +36,32 @@ Ansys 独自の API（`DataModel`, `Model`, `Tree` など）は外部の Python 
 ```json
 {
     "python.analysis.extraPaths": [
-        "./path/to/ansys-stubs"
+        "./stubs/mechanical",
+        "./stubs/spaceclaim"
     ]
 }
 ```
 
-これにより、スクリプト内で `import` していなくても、グローバル変数の型推論が効くようになります。
+これにより、スクリプト内で `import` していなくても、`Model` や `DataModel` といったグローバル変数の型推論が効くようになります。
 
-## 4. デバッグのコツ
+## 4. スクリプトの実行方法 (各製品)
+
+スクリプトを実際に動作させる場所は以下の通りです。
+
+### Ansys Mechanical
+1.  **自動化 (Automation)** タブをクリック。
+2.  **スクリプト (Scripting)** をクリックして、スクリプトウィンドウを表示します。
+3.  エディタにコードを貼り付け、**実行 (Run)** ボタンをクリックします。
+
+### Ansys SpaceClaim (Discovery)
+1.  **デザイン (Design)** タブにある **スクリプト (Script)** ボタンをクリック。
+2.  右側に開くスクリプトエディタにコードを貼り付け、再生ボタン（実行）をクリックします。
+
+### Ansys Workbench
+1.  **ファイル (File)** -> **ジャーナルのスクリプト実行 (Scripting -> Run Script File...)** を選択。
+2.  `.wbjn` ファイルを選択して実行します。
+
+## 5. デバッグのコツ
 
 Ansys 内部スクリプトは VS Code から直接デバッグ実行（F5）はできません。
 
