@@ -1,0 +1,35 @@
+# encoding: utf-8
+# Workbench Journal: Save and Archive
+# Tested on: Ansys 2023 R2
+
+# Description:
+# 現在のプロジェクトを保存し、指定したパスにアーカイブ (.wbpz) を作成します。
+
+import os
+
+def save_and_archive():
+    # 1. プロジェクトの保存
+    Save()
+    print("Project saved.")
+
+    # 2. アーカイブの作成
+    project_path = GetProject().FilePath
+    if project_path:
+        project_dir = os.path.dirname(project_path)
+        project_name = os.path.basename(project_path).split(".")[0]
+        
+        archive_path = os.path.join(project_dir, project_name + "_backup.wbpz")
+        
+        # Archive(FilePath, includeExternalFiles, includeSimulationResults)
+        Archive(
+            FilePath=archive_path,
+            IncludeExternalFiles=True,
+            IncludeSimulationResults=True
+        )
+        print("Archive created at: " + archive_path)
+    else:
+        print("Error: Project must be saved at least once before archiving.")
+
+if __name__ == "__main__":
+    save_and_archive()
+
