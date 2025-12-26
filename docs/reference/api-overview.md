@@ -29,21 +29,30 @@ Mechanical のスクリプトウィンドウでは、以下の変数が自動的
 
 ### 1.2 オブジェクト階層
 
-```
-Model
-├── Geometry (ジオメトリ)
-│   └── Part / Body (パーツ / ボディ)
-├── NamedSelections (名前付き選択)
-├── Mesh (メッシュ)
-├── Analyses[] (解析システム)
-│   ├── AnalysisSettings (解析設定)
-│   ├── BoundaryConditions (境界条件)
-│   │   ├── Force (荷重)
-│   │   ├── FixedSupport (固定拘束)
-│   │   └── ...
-│   └── Solution (ソリューション)
-│       └── Results[] (結果)
-└── Materials (材料)
+```mermaid
+graph TD
+    Model[Model<br/>ルートオブジェクト] --> Geometry[Geometry<br/>ジオメトリ]
+    Model --> NamedSelections[NamedSelections<br/>名前付き選択]
+    Model --> Mesh[Mesh<br/>メッシュ]
+    Model --> Analyses[Analyses<br/>解析システム配列]
+    Model --> Materials[Materials<br/>材料]
+    
+    Geometry --> PartBody[Part / Body<br/>パーツ / ボディ]
+    
+    Analyses --> AnalysisSettings[AnalysisSettings<br/>解析設定]
+    Analyses --> BoundaryConditions[BoundaryConditions<br/>境界条件]
+    Analyses --> Solution[Solution<br/>ソリューション]
+    
+    BoundaryConditions --> Force[Force<br/>荷重]
+    BoundaryConditions --> FixedSupport[FixedSupport<br/>固定拘束]
+    
+    Solution --> Results[Results<br/>結果配列]
+    
+    style Model fill:#e1f5ff
+    style Geometry fill:#fff4e1
+    style Analyses fill:#e8f5e9
+    style BoundaryConditions fill:#f3e5f5
+    style Solution fill:#f3e5f5
 ```
 
 ### 1.3 よく使うメソッド
@@ -100,13 +109,20 @@ SpaceClaim スクリプトは、3D ジオメトリの作成・編集を行うた
 
 ### 2.2 オブジェクト階層
 
-```
-Document
-└── RootPart
-    ├── Bodies[] (ボディ)
-    │   ├── Faces[] (面)
-    │   └── Edges[] (エッジ)
-    └── Components[] (コンポーネント)
+```mermaid
+graph TD
+    Document[Document<br/>ドキュメント] --> RootPart[RootPart<br/>ルートパーツ]
+    
+    RootPart --> Bodies[Bodies<br/>ボディ配列]
+    RootPart --> Components[Components<br/>コンポーネント配列]
+    
+    Bodies --> Faces[Faces<br/>面配列]
+    Bodies --> Edges[Edges<br/>エッジ配列]
+    
+    style Document fill:#e1f5ff
+    style RootPart fill:#fff4e1
+    style Bodies fill:#e8f5e9
+    style Components fill:#e8f5e9
 ```
 
 ### 2.3 よく使うメソッド
@@ -144,6 +160,44 @@ DocumentInsert.Execute(r"C:\path\to\file.step", options)
 | オブジェクト取得 | `DataModel.GetObjectsByType()` | `GetRootPart().Bodies` など |
 | 選択操作 | `ExtAPI.SelectionManager` | `Selection.Create()` |
 
+#### 製品間のAPI比較
+
+```mermaid
+graph LR
+    subgraph Mech [Mechanical API]
+        MechModel[Model]
+        MechDataModel[DataModel]
+        MechExtAPI[ExtAPI]
+    end
+    
+    subgraph SC [SpaceClaim API]
+        SCRootPart[GetRootPart]
+        SCSelection[Selection]
+        SCNamedSel[NamedSelection]
+    end
+    
+    subgraph WB [Workbench API]
+        WBProject[GetProject]
+        WBSave[Save]
+        WBSystem[GetSystem]
+    end
+    
+    MechModel --> MechDataModel
+    MechModel --> MechExtAPI
+    
+    SCRootPart --> SCSelection
+    SCSelection --> SCNamedSel
+    
+    WBProject --> WBSave
+    WBProject --> WBSystem
+    
+    style Mech fill:#e1f5ff
+    style SC fill:#fff4e1
+    style WB fill:#e8f5e9
+```
+
+各製品のAPIは異なる目的と構造を持っていますが、Workbench JournalからMechanicalスクリプトを実行することで連携できます。
+
 ---
 
 ## 3. Workbench Journal API
@@ -162,14 +216,20 @@ Workbench Journal (`.wbjn`) は、プロジェクト全体の管理・更新を�
 
 ### 3.2 プロジェクト構造
 
-```
-Project
-├── ParameterSet (パラメータセット)
-│   └── Parameters[] (P1, P2, ...)
-└── Systems[] (解析システム)
-    ├── Geometry Component
-    ├── Model Component (Mechanical)
-    └── Solution Component
+```mermaid
+graph TD
+    Project[Project<br/>プロジェクト] --> ParameterSet[ParameterSet<br/>パラメータセット]
+    Project --> Systems[Systems<br/>解析システム配列]
+    
+    ParameterSet --> Parameters[Parameters<br/>P1, P2, ...]
+    
+    Systems --> GeometryComp[Geometry Component<br/>ジオメトリコンポーネント]
+    Systems --> ModelComp[Model Component<br/>Mechanical]
+    Systems --> SolutionComp[Solution Component<br/>ソリューションコンポーネント]
+    
+    style Project fill:#e1f5ff
+    style ParameterSet fill:#fff4e1
+    style Systems fill:#e8f5e9
 ```
 
 ### 3.3 よく使うコード

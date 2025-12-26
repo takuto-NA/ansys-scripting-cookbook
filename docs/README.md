@@ -6,6 +6,38 @@ Ansys スクリプト開発のための共通ガイド、環境構築、およ�
 
 このディレクトリには、Ansys スクリプト開発に必要なすべてのドキュメントが含まれています。初心者向けのガイドから、上級者向けのリファレンスまで、段階的に学習できる構成になっています。
 
+### ドキュメント構造と学習パス
+
+```mermaid
+graph TD
+    Start[はじめに] --> Beginner[初心者向けガイド]
+    Start --> Env[環境構築]
+    
+    Beginner --> QuickStart[クイックスタートガイド]
+    Beginner --> Glossary[用語集]
+    Beginner --> Troubleshooting[トラブルシューティング]
+    
+    Env --> Setup[VS Code環境構築]
+    
+    QuickStart --> Reference[リファレンス]
+    Glossary --> Reference
+    
+    Reference --> API[API概要ガイド]
+    Reference --> Template[スクリプトテンプレート]
+    Reference --> Debug[デバッグガイド]
+    Reference --> Pitfalls[技術的な落とし穴]
+    Reference --> CAD[CAD互換性ガイド]
+    
+    QuickStart --> CheatSheet[チートシート]
+    Reference --> CheatSheet
+    
+    style Start fill:#e1f5ff
+    style Beginner fill:#fff4e1
+    style Env fill:#e8f5e9
+    style Reference fill:#f3e5f5
+    style CheatSheet fill:#c8e6c9
+```
+
 ## 📚 ガイド
 
 ### 初心者向け

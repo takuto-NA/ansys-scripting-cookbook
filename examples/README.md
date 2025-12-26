@@ -51,6 +51,45 @@ graph TD
 - **Analysis ワークフロー** は **CDB ワークフロー** の機能に加えて、解析実行までを含みます
 - どちらのワークフローも、Rhino での色付け → Workbench 設定 → Mechanical スクリプト実行という流れは同じです
 
+#### 詳細なワークフローステップ
+
+```mermaid
+graph TD
+    subgraph RhinoToCDB [Rhino to CDB ワークフロー]
+        R1[Rhinoで色付け] --> R2[STEPエクスポート]
+        R2 --> R3[Workbench設定<br/>Named Selections: Yes]
+        R3 --> R4[Mechanicalスクリプト<br/>色からNamed Selection検索]
+        R4 --> R5[メッシュサイズ設定]
+        R5 --> R6[メッシュ生成]
+        R6 --> R7[CDBエクスポート]
+    end
+    
+    subgraph RhinoToAnalysis [Rhino to Analysis ワークフロー]
+        A1[Rhinoで色付け] --> A2[STEPエクスポート]
+        A2 --> A3[Workbench設定<br/>Named Selections: Yes]
+        A3 --> A4[Mechanicalスクリプト<br/>色からNamed Selection検索]
+        A4 --> A5[メッシュサイズ設定]
+        A5 --> A6[荷重条件設定]
+        A6 --> A7[メッシュ生成]
+        A7 --> A8[解析実行]
+        A8 --> A9[結果取得]
+    end
+    
+    subgraph RhinoThicken [Rhino Thicken ワークフロー]
+        T1[Rhinoシェルモデル] --> T2[STEPエクスポート]
+        T2 --> T3[SpaceClaimでインポート]
+        T3 --> T4[厚み付け処理<br/>Thicken.Execute]
+        T4 --> T5[STEP再エクスポート]
+    end
+    
+    style R1 fill:#e1f5ff
+    style R7 fill:#c8e6c9
+    style A1 fill:#e1f5ff
+    style A9 fill:#c8e6c9
+    style T1 fill:#e1f5ff
+    style T5 fill:#c8e6c9
+```
+
 ## 📋 サンプル一覧
 
 ### 基本例

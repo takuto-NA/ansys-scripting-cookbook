@@ -45,6 +45,28 @@ cd ansys-scripting-cookbook
 
 **Ansys Mechanical の場合：**
 
+```mermaid
+graph TD
+    Start[Workbench起動] --> AddSystem[Static Structural<br/>システムを追加]
+    AddSystem --> ImportGeo[ジオメトリをインポート]
+    ImportGeo --> OpenMech[Mechanicalを開く]
+    OpenMech --> ClickAuto[Automationタブをクリック]
+    ClickAuto --> ClickScript[Scriptingをクリック]
+    ClickScript --> PasteCode[コードを貼り付け]
+    PasteCode --> Run[Runボタンをクリック]
+    Run --> Success[成功: コンソールに<br/>ボディ情報が表示]
+    
+    style Start fill:#e1f5ff
+    style AddSystem fill:#fff4e1
+    style ImportGeo fill:#fff4e1
+    style OpenMech fill:#e8f5e9
+    style ClickAuto fill:#e8f5e9
+    style ClickScript fill:#e8f5e9
+    style PasteCode fill:#f3e5f5
+    style Run fill:#f3e5f5
+    style Success fill:#c8e6c9
+```
+
 1. Ansys Workbench を起動し、**Static Structural** などのシステムを追加します。
 2. ジオメトリをインポート（または既存のプロジェクトを開く）します。
 3. **Mechanical** を開きます。
@@ -75,6 +97,36 @@ for i, body in enumerate(all_bodies):
 `examples/hello_mechanical.py` を開き、その内容を Mechanical のスクリプトウィンドウに貼り付けて実行してみてください。
 
 ## 📚 次のステップ
+
+```mermaid
+graph TD
+    QuickStart[クイックスタート完了] --> API[API構造を理解]
+    QuickStart --> Glossary[用語集で用語理解]
+    QuickStart --> Setup[環境構築<br/>VS Code設定]
+    
+    API --> CheatSheet[チートシートで<br/>コードスニペット探索]
+    Glossary --> CheatSheet
+    Setup --> CheatSheet
+    
+    CheatSheet --> Practice[実用的なスクリプトを探す]
+    Practice --> Mech[Mechanical]
+    Practice --> WB[Workbench]
+    Practice --> SC[SpaceClaim]
+    Practice --> Interop[ツール間連携]
+    
+    Mech --> Troubleshooting[トラブルシューティング]
+    WB --> Troubleshooting
+    SC --> Troubleshooting
+    Interop --> Troubleshooting
+    
+    style QuickStart fill:#c8e6c9
+    style API fill:#fff4e1
+    style Glossary fill:#fff4e1
+    style Setup fill:#e8f5e9
+    style CheatSheet fill:#e1f5ff
+    style Practice fill:#f3e5f5
+    style Troubleshooting fill:#ffebee
+```
 
 ### 1. API の構造を理解する
 

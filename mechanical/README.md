@@ -6,6 +6,28 @@ Ansys Mechanical (Simulation) の操作を自動化するためのスクリプ�
 
 Mechanical スクリプト（ACT）で最も頻繁に使用するグローバルオブジェクトです。
 
+```mermaid
+graph TD
+    Global[グローバルオブジェクト] --> Model[Model<br/>モデルツリーのルート]
+    Global --> DataModel[DataModel<br/>オブジェクト検索]
+    Global --> ExtAPI[ExtAPI<br/>拡張API]
+    Global --> Tree[Tree<br/>ツリービュー操作]
+    
+    Model --> Geometry[Geometry<br/>ジオメトリ]
+    Model --> Analyses[Analyses<br/>解析システム]
+    Model --> Mesh[Mesh<br/>メッシュ]
+    
+    DataModel --> GetObjectsByType[GetObjectsByType<br/>型で検索]
+    DataModel --> GetObjectsByName[GetObjectsByName<br/>名前で検索]
+    
+    ExtAPI --> SelectionManager[SelectionManager<br/>選択マネージャ]
+    
+    style Global fill:#e1f5ff
+    style Model fill:#fff4e1
+    style DataModel fill:#e8f5e9
+    style ExtAPI fill:#f3e5f5
+```
+
 | オブジェクト | 説明 |
 | :--- | :--- |
 | `Model` | モデルツリー全体のルート。`Model.Geometry` や `Model.Analyses` へアクセス。 |
@@ -37,6 +59,32 @@ Model.Mesh.GenerateMesh()
 
 # 解析実行
 Model.Analyses[0].Solve(True)
+```
+
+### 典型的なワークフロー
+
+```mermaid
+graph LR
+    Start[スクリプト開始] --> GetGeo[ジオメトリ取得<br/>DataModel.GetObjectsByType]
+    GetGeo --> CreateNS[Named Selection作成<br/>Model.AddNamedSelection]
+    CreateNS --> SetMesh[メッシュ設定<br/>Model.Mesh.ElementSize]
+    SetMesh --> GenerateMesh[メッシュ生成<br/>Model.Mesh.GenerateMesh]
+    GenerateMesh --> SetBC[境界条件設定<br/>analysis.AddForce等]
+    SetBC --> Solve[解析実行<br/>analysis.Solve]
+    Solve --> GetResult[結果取得<br/>solution.AddEquivalentStress]
+    GetResult --> Export[結果エクスポート<br/>analysis.ExportMechanicalData]
+    Export --> End[完了]
+    
+    style Start fill:#e1f5ff
+    style GetGeo fill:#fff4e1
+    style CreateNS fill:#fff4e1
+    style SetMesh fill:#e8f5e9
+    style GenerateMesh fill:#e8f5e9
+    style SetBC fill:#f3e5f5
+    style Solve fill:#f3e5f5
+    style GetResult fill:#c8e6c9
+    style Export fill:#c8e6c9
+    style End fill:#e1f5ff
 ```
 
 ## 📂 セクション
