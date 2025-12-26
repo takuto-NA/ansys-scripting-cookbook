@@ -36,16 +36,16 @@ selection = Selection.Create(bodies[0].Faces)
 # ...
 ```
 
-## 📂 フォルダ構成
+## 📂 セクション
 
-- **[modeling/](./modeling/)**: 形状作成、クリーニング、修正など。
-  - **[clean_geometry.py](./modeling/clean_geometry.py)**: 小さいエッジや面の削除、形状の簡略化。
-- **[named-selection/](./named-selection/)**: 面やボディの選択、Named Selection の作成。
+- **[モデリング](/spaceclaim/modeling)**: 形状作成、クリーニング、修正など。
+  - **[clean_geometry.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/spaceclaim/clean_geometry.py)**: 小さいエッジや面の削除、形状の簡略化。
+- **[Named Selection](/spaceclaim/named-selection)**: 面やボディの選択、Named Selection の作成。
 
 ## 🚀 実行方法
 
 SpaceClaim 内の **Design (デザイン)** タブ -> **Script (スクリプト)** ボタンを押し、右側のエディタに貼り付けて実行してください。
-詳細は [環境構築ガイド](../docs/setup.md) を参照してください。
+詳細は [環境構築ガイド](/docs/setup) を参照してください。
 
 ## 💡 コツ: 「スクリプトの記録」を活用する
 SpaceClaim のスクリプトエディタにある **Record (記録)** ボタンを押してから GUI 操作を行うと、対応する Python コードが自動生成されます。これをベースにループや条件分岐を追加するのが最も効率的な開発方法です。

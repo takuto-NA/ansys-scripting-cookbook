@@ -13,7 +13,7 @@ Archive(FilePath="C:/Backup/Project.wbpz", IncludeItems=["Results", "ExternalFil
 
 ## 🛠️ スニペット一覧
 
-- **[save_and_archive.wbjn](./save_and_archive.wbjn)**: 現在のプロジェクトを保存し、`.wbpz` 形式でアーカイブを作成します。
+- **[save_and_archive.wbjn](https://github.com/your-org/ansys-scripting-cookbook/blob/main/workbench/save_and_archive.wbjn)**: 現在のプロジェクトを保存し、`.wbpz` 形式でアーカイブを作成します。
 
 ## 💡 主な用途
 

@@ -288,12 +288,9 @@ from common_snippets.logger import SimpleLogger
 
 ```
 mechanical/
-├── geometry/
-│   └── create_named_selection.py  # ジオメトリ操作
-├── boundary-cond/
-│   └── batch_assign_materials.py  # 境界条件設定
-└── post-processing/
-    └── simple_export.py           # 結果処理
+├── create_named_selection.py     # ジオメトリ操作
+├── batch_assign_materials.py     # 境界条件設定
+└── simple_export.py               # 結果処理
 ```
 
 ---

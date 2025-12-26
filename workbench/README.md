@@ -34,11 +34,11 @@ script = "Model.Mesh.GenerateMesh()"
 model.SendCommand(Language='Python', Command=script)
 ```
 
-## 📂 フォルダ構成
+## 📂 セクション
 
-- **[basic-ops/](./basic-ops/)**: プロジェクトの保存、アーカイブ、コンポーネントの追加など。
-- **[project-update/](./project-update/)**: プロジェクト全体の更新、パラメータセットの操作。
-  - **[batch_run_csv.wbjn](./project-update/batch_run_csv.wbjn)**: CSV ファイルからパラメータを読み込み、連続計算を実行。
+- **[基本操作](/workbench/basic-ops)**: プロジェクトの保存、アーカイブ、コンポーネントの追加など。
+- **[プロジェクト更新](/workbench/project-update)**: プロジェクト全体の更新、パラメータセットの操作。
+  - **[batch_run_csv.wbjn](https://github.com/your-org/ansys-scripting-cookbook/blob/main/workbench/batch_run_csv.wbjn)**: CSV ファイルからパラメータを読み込み、連続計算を実行。
 
 ## 🚀 実行方法
 

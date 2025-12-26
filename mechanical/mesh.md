@@ -19,9 +19,9 @@ mesh.GenerateMesh()
 
 ## 🛠️ スニペット一覧
 
-- **[set_global_mesh_size.py](./set_global_mesh_size.py)**: 全体のメッシュサイズを指定して生成します。
-- **[add_local_sizing.py](./add_local_sizing.py)**: 特定の部位（Named Selection）に対してローカルサイズ設定（Sizing）を追加します。
-- **[dynamic_face_sizing.py](./dynamic_face_sizing.py)**: 面の面積などの属性に基づいて動的に Named Selection を作成し、個別のサイズを適用します。
+- **[set_global_mesh_size.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/set_global_mesh_size.py)**: 全体のメッシュサイズを指定して生成します。
+- **[add_local_sizing.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/add_local_sizing.py)**: 特定の部位（Named Selection）に対してローカルサイズ設定（Sizing）を追加します。
+- **[dynamic_face_sizing.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/dynamic_face_sizing.py)**: 面の面積などの属性に基づいて動的に Named Selection を作成し、個別のサイズを適用します。
 
 ## 💡 主な用途
 

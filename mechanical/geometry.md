@@ -18,7 +18,7 @@ ns.Location = sel_mgr.CreateSelectionInfo(SelectionTypeEnum.GeometryEntities)
 
 ## 🛠️ スニペット一覧
 
-- **[create_named_selection.py](./create_named_selection.py)**: ボディ名やキーワードに基づいて、Named Selection を自動作成します。
+- **[create_named_selection.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/create_named_selection.py)**: ボディ名やキーワードに基づいて、Named Selection を自動作成します。
 
 ## 💡 主な用途
 

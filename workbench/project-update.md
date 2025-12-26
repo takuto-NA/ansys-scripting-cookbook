@@ -18,7 +18,7 @@ UpdateAllDesignPoints()
 
 ## 🛠️ スニペット一覧
 
-- **[batch_run_csv.wbjn](./batch_run_csv.wbjn)**: CSV からパラメータを読み込み、連続計算を実行します。
+- **[batch_run_csv.wbjn](https://github.com/your-org/ansys-scripting-cookbook/blob/main/workbench/batch_run_csv.wbjn)**: CSV からパラメータを読み込み、連続計算を実行します。
 
 ## 💡 主な用途
 

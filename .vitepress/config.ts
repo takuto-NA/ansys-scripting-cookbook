@@ -48,28 +48,28 @@ export default defineConfig({
 
       '/mechanical/': [
         { text: 'Mechanical スクリプト', link: '/mechanical/' },
-        { text: 'ジオメトリ', link: '/mechanical/geometry/' },
-        { text: 'メッシュ', link: '/mechanical/mesh/' },
-        { text: '境界条件', link: '/mechanical/boundary-cond/' },
-        { text: '後処理', link: '/mechanical/post-processing/' }
+        { text: 'ジオメトリ', link: '/mechanical/geometry' },
+        { text: 'メッシュ', link: '/mechanical/mesh' },
+        { text: '境界条件', link: '/mechanical/boundary-cond' },
+        { text: '後処理', link: '/mechanical/post-processing' }
       ],
 
       '/spaceclaim/': [
         { text: 'SpaceClaim スクリプト', link: '/spaceclaim/' },
-        { text: 'モデリング', link: '/spaceclaim/modeling/' },
-        { text: 'Named Selection', link: '/spaceclaim/named-selection/' }
+        { text: 'モデリング', link: '/spaceclaim/modeling' },
+        { text: 'Named Selection', link: '/spaceclaim/named-selection' }
       ],
 
       '/workbench/': [
         { text: 'Workbench Journal', link: '/workbench/' },
-        { text: '基本操作', link: '/workbench/basic-ops/' },
-        { text: 'プロジェクト更新', link: '/workbench/project-update/' }
+        { text: '基本操作', link: '/workbench/basic-ops' },
+        { text: 'プロジェクト更新', link: '/workbench/project-update' }
       ],
 
       '/interop/': [
         { text: 'ツール間連携', link: '/interop/' },
-        { text: 'Color to Named Selection', link: '/interop/step-import-trick/color_named_selection' },
-        { text: 'Pass Parameters', link: '/interop/wb-to-mech/pass_parameters' }
+        { text: 'Color to Named Selection', link: '/interop/color_named_selection' },
+        { text: 'Pass Parameters', link: '/interop/pass_parameters' }
       ],
 
       '/examples/': [

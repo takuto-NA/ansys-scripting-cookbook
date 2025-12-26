@@ -14,7 +14,7 @@ NamedSelection.Create(selection, "MyNewGroup")
 
 ## 🛠️ スニペット例
 
-具体的な作成例は、[Interop: Color to Named Selection](../../interop/step-import-trick/color_named_selection.md) 内の SpaceClaim スクリプトを参照してください。
+具体的な作成例は、[Interop: Color to Named Selection](/interop/color_named_selection) 内の SpaceClaim スクリプトを参照してください。
 
 ## 💡 ヒント: 名前の重複
 同じ名前のグループを `NamedSelection.Create` で作成しようとすると、エラーになるか、自動的に連番（`Group1`, `Group2`...）が振られる場合があります。作成前に既存のグループを確認することを推奨します。

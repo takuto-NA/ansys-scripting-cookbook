@@ -43,7 +43,7 @@ ns.Name = "Fixed_Faces"
 ns.Location = selected_faces
 ```
 
-**関連ドキュメント：** [`mechanical/geometry/create_named_selection.py`](../mechanical/geometry/create_named_selection.py)
+**関連ドキュメント：** [`mechanical/create_named_selection.py`](../mechanical/create_named_selection.py)
 
 ## 🏗️ Ansys の構造
 
@@ -108,7 +108,7 @@ ns = Model.NamedSelections.AddNamedSelection()
 
 **STEP** は、業界標準の3D CAD データ交換フォーマットです。色情報やレイヤー情報を保持できる場合があります。
 
-**関連ドキュメント：** [CAD 互換性ガイド](./reference/cad-compatibility.md), [`interop/step-import-trick/`](../interop/step-import-trick/)
+**関連ドキュメント：** [CAD 互換性ガイド](./reference/cad-compatibility.md), [Color to Named Selection](/interop/color_named_selection)
 
 ### SpaceClaim Document (.scdoc, .scdocx)
 
@@ -134,7 +134,7 @@ CAD ファイルを Workbench にアタッチする際のモードの一つ。CA
 
 **Engineering Data** は、Workbench で材料の物性値を定義・管理するコンポーネントです。スクリプトから材料を割り当てる際は、ここに定義された材料名を使用します。
 
-**関連ドキュメント：** [`mechanical/boundary-cond/batch_assign_materials.py`](../mechanical/boundary-cond/batch_assign_materials.py)
+**関連ドキュメント：** [`mechanical/batch_assign_materials.py`](../mechanical/batch_assign_materials.py)
 
 ### Static Structural
 

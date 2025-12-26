@@ -80,7 +80,7 @@ else:
     print("Material 'Structural Steel' not found!")
 ```
 
-**参考：** [`mechanical/boundary-cond/batch_assign_materials.py`](../mechanical/boundary-cond/batch_assign_materials.py)
+**参考：** [`mechanical/batch_assign_materials.py`](../mechanical/batch_assign_materials.py)
 
 ---
 

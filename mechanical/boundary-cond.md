@@ -17,7 +17,7 @@ force.Location = my_named_selection # Named Selection を割り当て
 
 ## 🛠️ スニペット一覧
 
-- **[batch_assign_materials.py](./batch_assign_materials.py)**: ボディ名に含まれるキーワードに基づいて、材料を一括で割り当てます。
+- **[batch_assign_materials.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/batch_assign_materials.py)**: ボディ名に含まれるキーワードに基づいて、材料を一括で割り当てます。
 
 ## 💡 主な用途
 

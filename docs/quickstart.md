@@ -104,9 +104,9 @@ Ansys スクリプト開発でよく使われる用語は、**[用語集](./glos
 ### Q: どのスクリプトから始めればいい？
 
 **A:** 目的に応じて：
-- **ジオメトリ操作**: `mechanical/geometry/create_named_selection.py`
-- **材料割り当て**: `mechanical/boundary-cond/batch_assign_materials.py`
-- **Workbench の自動化**: `workbench/basic-ops/save_and_archive.wbjn`
+- **ジオメトリ操作**: `mechanical/create_named_selection.py`
+- **材料割り当て**: `mechanical/batch_assign_materials.py`
+- **Workbench の自動化**: `workbench/save_and_archive.wbjn`
 
 ## 🎓 学習リソース
 
