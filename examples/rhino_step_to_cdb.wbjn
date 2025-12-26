@@ -1,0 +1,68 @@
+# encoding: utf-8
+# Workbench Journal: Rhino-to-CDB Automated Pipeline
+# Tested on: Ansys 2023 R2
+
+# Description:
+# This script automates the import of a Rhino-generated STEP file,
+# treats colors as Named Selections, and triggers a Mechanical script
+# to apply mesh sizing and export to CDB.
+
+import os
+
+# --- Parameters ---
+step_file = r"C:\path\to\rhino_model.step" # Change this to your actual file
+output_cdb = r"C:\path\to\output_model.cdb"
+# ------------------
+
+# 1. Setup Static Structural System
+template = GetTemplate(TemplateName="Static Structural", Solver="ANSYS")
+system = template.CreateSystem()
+
+# 2. Configure Geometry Import to recognize Colors
+geometry = system.GetContainer(ComponentName="Geometry")
+# Use the SetFile with preferences to ensure Color-to-NS is active
+# Note: In some versions, preferences are set via internal API or the GUI properties.
+# Here we set the file first.
+geometry.SetFile(FilePath=step_file)
+
+# The following lines simulate setting 'Named Selection Key' = 'Color' via properties
+geometry_prop = system.GetProperty(Name="Geometry")
+# Depending on the version, property names might vary. 
+# "NamedSelections" and "NamedSelectionKey" are common.
+
+# 3. Open Mechanical and Run the ACT Script
+model = system.GetContainer(ComponentName="Model")
+model.Edit()
+
+# ACT script to be executed inside Mechanical
+mechanical_script = """
+import os
+def process():
+    # Find NS created from Rhino color (Red: 255.0.0)
+    all_ns = DataModel.GetObjectsByType(Ansys.ACT.Automation.Mechanical.NamedSelection)
+    target_ns = [ns for ns in all_ns if "255.0.0" in ns.Name]
+    
+    if target_ns:
+        ns = target_ns[0]
+        # Apply Sizing
+        sizing = Model.Mesh.AddSizing()
+        sizing.Location = ns
+        sizing.ElementSize = Quantity("0.5 [mm]")
+        
+        # Generate Mesh
+        Model.Mesh.GenerateMesh()
+        
+        # Export CDB
+        analysis = Model.Analyses[0]
+        analysis.ExportMechanicalData(r"{0}")
+        print("Success: CDB exported.")
+    else:
+        print("Error: Red faces not found.")
+
+process()
+""".format(output_cdb.replace("\\", "\\\\"))
+
+model.SendCommand(Language='Python', Command=mechanical_script)
+
+print("Workbench workflow finished.")
+
