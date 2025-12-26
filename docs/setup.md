@@ -68,6 +68,16 @@ Ansys 内部スクリプトは VS Code から直接デバッグ実行（F5）は
 1.  **Mechanical/SpaceClaim 内で実行**: スクリプトをコピペして Ansys のコンソールに貼り付けます。
 2.  **ログ出力**: `print` 文や、本リポジトリの `common-snippets/logger.py` を活用して実行時の値を確認してください。
 
+詳細なデバッグ方法は **[デバッグガイド](./reference/debugging.md)** を参照してください。
+
+---
+
+## 📚 次のステップ
+
+- **[API 概要ガイド](./reference/api-overview.md)**: API の全体像を把握
+- **[スクリプトテンプレート](./reference/script-template.md)**: スクリプトの書き方を学ぶ
+- **[チートシート](./cheatsheet.md)**: よく使うコードを探す
+
 ---
 
 [← 戻る](../README.md)

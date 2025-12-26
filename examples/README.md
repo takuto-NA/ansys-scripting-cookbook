@@ -2,6 +2,35 @@
 
 複数の製品や工程を跨ぐ、より実戦的で統合的なワークフローの例を掲載します。
 
-## サンプル一覧
+## 📋 サンプル一覧
+
+### 基本例
 
 - **[hello_mechanical.py](./hello_mechanical.py)**: Mechanical スクリプトの最も基本的な構成例。
+  - ジオメトリ情報の取得方法
+  - `DataModel.GetObjectsByType` の使い方
+  - エラーハンドリングの基本
+
+## 🎯 使い方
+
+1. **Ansys 製品を起動**（Mechanical, SpaceClaim, Workbench など）
+2. **スクリプトウィンドウを開く**
+   - Mechanical: **Automation** タブ → **Scripting**
+   - SpaceClaim: **Design** タブ → **Script**
+   - Workbench: **File** → **Scripting** → **Run Script File...**
+3. **サンプルコードをコピー＆ペースト**
+4. **実行**
+
+詳細は [クイックスタートガイド](../docs/quickstart.md) を参照してください。
+
+## 💡 学習のヒント
+
+- 各サンプルには詳細なコメントが含まれています。コメントを読みながら動作を理解しましょう。
+- サンプルコードを少し変更して、動作を確認してみてください。
+- エラーが発生した場合は [トラブルシューティングガイド](../docs/troubleshooting.md) を参照してください。
+
+## 🔗 関連ドキュメント
+
+- [クイックスタートガイド](../docs/quickstart.md)
+- [用語集](../docs/glossary.md)
+- [トラブルシューティングガイド](../docs/troubleshooting.md)

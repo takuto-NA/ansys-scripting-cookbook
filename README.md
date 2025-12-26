@@ -24,7 +24,7 @@
 
 | カテゴリ | 内容 | リンク |
 | :--- | :--- | :--- |
-| **docs** | 📘 共通ガイド（環境構築、IronPython基礎） | [Link](./docs/) |
+| **docs** | 📘 共通ガイド（クイックスタート、環境構築、用語集、トラブルシューティング） | [Link](./docs/) |
 | **workbench** | ⚙️ Workbench Journal (.wbjn) | [Link](./workbench/) |
 | **mechanical** | 🧊 Mechanical Scripting (Python) | [Link](./mechanical/) |
 | **spaceclaim** | ✏️ SpaceClaim Scripting | [Link](./spaceclaim/) |
@@ -36,7 +36,27 @@
 
 ## 🚀 はじめに
 
-まずは **[環境構築ガイド](./docs/setup.md)** をご覧ください。VS CodeでIntelliSense（入力補完）を有効にする設定方法を解説しています。これが快適な開発の第一歩です。
+**初めての方は、まず [クイックスタートガイド](./docs/quickstart.md) から始めてください。** 5分で最初のスクリプトを実行できます。
+
+### 📚 学習パス
+
+1. **[クイックスタートガイド](./docs/quickstart.md)**: 最初のスクリプトを実行してみる
+2. **[用語集](./docs/glossary.md)**: Ansys 特有の用語を理解する
+3. **[API 概要ガイド](./docs/reference/api-overview.md)**: API の構造と主要オブジェクトを把握する
+4. **[環境構築ガイド](./docs/setup.md)**: VS CodeでIntelliSense（入力補完）を有効にする
+5. **[チートシート](./docs/cheatsheet.md)**: 「〇〇したい」からコードを探す
+6. **[トラブルシューティングガイド](./docs/troubleshooting.md)**: 問題が発生したら確認
+
+### ❓ よくある質問
+
+- **Q: Python の知識は必要ですか？**  
+  A: 基本的な知識（変数、関数、ループなど）があると理解が早いですが、必須ではありません。スクリプトはコピー＆ペーストで動作します。
+
+- **Q: どの Ansys バージョンで動作しますか？**  
+  A: 各スクリプトの冒頭に動作確認バージョンが記載されています。一般的に 2023 R2 以降で動作します。
+
+- **Q: エラーが発生したら？**  
+  A: [トラブルシューティングガイド](./docs/troubleshooting.md) を確認してください。
 
 ---
 
