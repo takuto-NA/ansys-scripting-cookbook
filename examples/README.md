@@ -16,6 +16,7 @@
 - **[workflow_step_to_cdb.wbjn](./workflow_step_to_cdb.wbjn)**: STEP インポートからメッシュ作成、CDB エクスポートまでを一括自動化する Workbench ジャーナル。
 - **[rhino_to_cdb_workflow.md](./rhino_to_cdb_workflow.md)**: Rhino で色付けした面を自動認識し、特定部位のメッシュ制御から CDB 出力までを行うエンドツーエンドの解説。
 - **[rhino_step_to_cdb.wbjn](./rhino_step_to_cdb.wbjn)**: 上記のワークフローを自動実行する Workbench ジャーナルファイル。
+- **[rhino_thicken_workflow.wbjn](./rhino_thicken_workflow.wbjn)**: Rhino のシェルを SpaceClaim で厚み付けしてソリッド化し、STEP で再出力する自動化スクリプト。
 
 ## 🎯 使い方
 

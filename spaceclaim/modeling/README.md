@@ -17,6 +17,7 @@ for body in GetRootPart().Bodies:
 
 - **[clean_geometry.py](./clean_geometry.py)**: 微小面や微小エッジを検出し、自動で削除（Fix）します。
 - **[thicken_shell.py](./thicken_shell.py)**: サーフェスボディ（シェル）を指定した厚みでソリッド化（両側オフセット等）します。
+- **[thicken_and_export.py](./thicken_and_export.py)**: シェルを厚み付けしてソリッド化し、別の STEP ファイルとしてエクスポートします。
 
 ## 💡 主な用途
 

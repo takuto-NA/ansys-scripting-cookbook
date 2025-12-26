@@ -296,6 +296,13 @@ options.ThickenBothSides = True # 両側にオフセット
 Thicken.Execute(selection, MM(2.0), options)
 ```
 
+#### モデルを別の STEP ファイルとしてエクスポートしたい
+
+```python
+export_options = ExportOptions.Create()
+DocumentSave.Execute(r"C:\temp\thickened.step", export_options)
+```
+
 ---
 
 ## ⚙️ Workbench Journal 編

@@ -1,0 +1,53 @@
+# encoding: utf-8
+# Workbench Journal: Rhino Shell to Thickened Solid Pipeline
+# Tested on: Ansys 2023 R2
+
+# Description:
+# Rhino から出力された STEP (シェル) を読み込み、
+# SpaceClaim で厚み付けしてソリッド化、
+# 再度 STEP としてエクスポートする全自動ワークフロー。
+
+import os
+
+# --- 設定パラメータ ---
+input_step = r"C:\path\to\rhino_shell.step"
+output_step = r"C:\path\to\thickened_solid.step"
+thickness = 2.0  # 厚み [mm]
+# ----------------------
+
+# 1. ジオメトリシステムの作成
+template = GetTemplate(TemplateName="Geometry")
+system = template.CreateSystem()
+
+# 2. STEP ファイルのセット
+geometry = system.GetContainer(ComponentName="Geometry")
+geometry.SetFile(FilePath=input_step)
+
+# 3. SpaceClaim を起動してスクリプトを実行
+# SpaceClaim (DesignModeler ではない) を指定
+geometry.Edit(Interactive=False) # 非対話モードで開く
+
+sc_script = """
+thickness_mm = {0}
+output_path = r"{1}"
+
+root = GetRootPart()
+surfaces = [b for b in root.Bodies if b.Shape.IsSurface]
+
+if surfaces:
+    selection = Selection.Create(surfaces)
+    options = ThickenOptions()
+    options.ThickenBothSides = True
+    Thicken.Execute(selection, MM(thickness_mm), options)
+    
+    # STEP としてエクスポート
+    export_options = ExportOptions.Create()
+    DocumentSave.Execute(output_path, export_options)
+""".format(thickness, output_step.replace("\\", "\\\\"))
+
+# SpaceClaim へのコマンド送信
+geometry.SendCommand(Command=sc_script)
+
+# 4. 終了
+print("Workflow completed. Thickened STEP saved to: " + output_step)
+
