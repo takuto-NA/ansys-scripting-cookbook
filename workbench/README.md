@@ -16,18 +16,22 @@ Workbench の操作は、IronPython 2.7 ベースの「ジャーナル」とし�
 | `GetSystem(Name="SYS")` | 特定の解析システム（例：Static Structural）を取得します。 |
 | `UpdateAllDesignPoints()` | 全てのデザインポイント（パラメータセット）を更新します。 |
 
-### 2. コンポーネントの操作
+### 2. コンポーネントの操作と自動連携
 ```python
 # システムの取得
 system = GetSystem(Name="SYS")
 
-# ジオメトリコンポーネントの編集（SpaceClaim/DesignModeler を起動）
-geometry = system.GetComponent(Name="Geometry")
-geometry.Edit()
-
-# モデルコンポーネントの更新（Mechanical のデータ更新）
+# モデルコンポーネント (Mechanical) を取得
 model = system.GetComponent(Name="Model")
-model.Update()
+
+# Mechanical を開く
+model.Edit() # GUI を表示
+# model.Edit(Interactive=False) # 非対話モード (バックグラウンド)
+
+# Mechanical に Python スクリプトを送信して実行 (自動連携の核)
+# これにより Workbench から Mechanical 内の操作を完全自動化できます
+script = "Model.Mesh.GenerateMesh()"
+model.SendCommand(Language='Python', Command=script)
 ```
 
 ## 📂 フォルダ構成

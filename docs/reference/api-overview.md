@@ -66,6 +66,9 @@ Model.Mesh.GenerateMesh()
 # 解析の追加
 analysis = Model.AddStaticStructuralAnalysis()
 
+# モデルのエクスポート (CDB 形式)
+analysis.ExportMechanicalData(r"C:\temp\model.cdb")
+
 # 結果の追加
 stress = analysis.Solution.AddEquivalentStress()
 ```
@@ -120,6 +123,9 @@ all_bodies = root.Bodies
 
 # 選択の作成
 selection = Selection.Create(target_faces)
+
+# 単位の指定 (ミリメートルを内部単位のメートルに変換)
+thickness = MM(2.0)
 
 # Named Selection (Group) の作成
 NamedSelection.Create(selection, "MyGroup")
@@ -185,6 +191,9 @@ system = GetSystem(Name="SYS")
 # コンポーネントの取得と操作
 geometry = system.GetComponent(Name="Geometry")
 model = system.GetComponent(Name="Model")
+
+# Mechanical に Python スクリプトを送信 (自動連携)
+model.SendCommand(Language='Python', Command="Model.Mesh.GenerateMesh()")
 
 # Mechanical を開く
 model.Edit()

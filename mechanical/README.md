@@ -30,6 +30,15 @@ fixed_support = [obj for obj in DataModel.AllObjects if obj.Name == "Fixed Suppo
 force.Magnitude.Output.SetData("100 [N]")
 ```
 
+### 3. メッシュの生成と解析実行
+```python
+# メッシュ生成
+Model.Mesh.GenerateMesh()
+
+# 解析実行
+Model.Analyses[0].Solve(True)
+```
+
 ## 📂 フォルダ構成
 
 - **[geometry/](./geometry/)**: ジオメトリの操作、Named Selection の作成など。
