@@ -1,0 +1,58 @@
+# encoding: utf-8
+# Workbench Journal: Batch Run from CSV
+# Tested on: Ansys 2023 R2
+
+# Description:
+# This script reads a CSV file containing parameter values,
+# updates the Workbench project parameters for each row, 
+# and saves the project.
+
+import os
+
+# --- Configuration ---
+CSV_PATH = "C:/Temp/parameters.csv"  # Format: ParamName1,ParamName2,Value1,Value2
+# ---------------------
+
+def batch_run():
+    # Get the parameter set
+    parameter_set = GetProject().GetParameterSet()
+    
+    if not os.path.exists(CSV_PATH):
+        print("Error: CSV file not found at {}".format(CSV_PATH))
+        return
+
+    with open(CSV_PATH, "r") as f:
+        lines = f.readlines()
+        
+    # Assume first line is header: P1, P2, ...
+    header = lines[0].strip().split(",")
+    
+    for i in range(1, len(lines)):
+        values = lines[i].strip().split(",")
+        print("Processing Row {}: {}".format(i, values))
+        
+        # Set parameters
+        for j in range(len(header)):
+            param_name = header[j]
+            param_value = values[j]
+            
+            parameter = parameter_set.GetParameter(Name=param_name)
+            if parameter:
+                parameter.Expression = param_value
+            else:
+                print("Warning: Parameter {} not found".format(param_name))
+        
+        # Update the project
+        print("Updating project...")
+        UpdateAllDesignPoints()
+        
+        # Save project for this point (optional)
+        project_path = GetProject().FilePath
+        base, ext = os.path.splitext(project_path)
+        new_path = "{}_DP{}.wbpj".format(base, i)
+        Save(FilePath=new_path, Overwrite=True)
+        print("Project saved to: {}".format(new_path))
+
+if __name__ == "__main__":
+    batch_run()
+
