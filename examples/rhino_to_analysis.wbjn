@@ -1,0 +1,62 @@
+# encoding: utf-8
+# Workbench Journal: Rhino Color to Analysis Execution
+# Tested on: Ansys 2023 R2
+
+# Description:
+# Rhino からの STEP (色付き) を読み込み、
+# 色に基づいてメッシュ制御と荷重設定を行い、
+# 解析実行までを自動化する。
+
+import os
+
+# --- 設定 ---
+step_file = r"C:\path\to\rhino_model.step"
+# -----------
+
+# 1. 解析システムの作成
+template = GetTemplate(TemplateName="Static Structural", Solver="ANSYS")
+system = template.CreateSystem()
+
+# 2. ジオメトリ設定
+geometry = system.GetContainer(ComponentName="Geometry")
+geometry.SetFile(FilePath=step_file)
+
+# 3. Mechanical 内での処理
+model = system.GetContainer(ComponentName="Model")
+model.Edit()
+
+# Mechanical スクリプトの定義
+mech_script = """
+import os
+
+def run_auto():
+    analysis = Model.Analyses[0]
+    all_ns = DataModel.GetObjectsByType(Ansys.ACT.Automation.Mechanical.NamedSelection)
+    
+    # 赤 (255.0.0) -> Sizing
+    red_ns = [ns for ns in all_ns if "255.0.0" in ns.Name]
+    if red_ns:
+        sizing = Model.Mesh.AddSizing()
+        sizing.Location = red_ns[0]
+        sizing.ElementSize = Quantity("0.5 [mm]")
+    
+    # 青 (0.0.255) -> Force
+    blue_ns = [ns for ns in all_ns if "0.0.255" in ns.Name]
+    if blue_ns:
+        force = analysis.AddForce()
+        force.Location = blue_ns[0]
+        force.Magnitude.Output.SetData("1000 [N]")
+    
+    # Solve
+    Model.Mesh.GenerateMesh()
+    analysis.Solve(True)
+
+run_auto()
+"""
+
+model.SendCommand(Language='Python', Command=mech_script)
+
+# プロジェクトの保存
+# Save(Overwrite=True)
+print("Automated Analysis Pipeline Finished.")
+
