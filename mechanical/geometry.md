@@ -18,11 +18,15 @@ ns.Location = sel_mgr.CreateSelectionInfo(SelectionTypeEnum.GeometryEntities)
 
 ## 🛠️ スニペット一覧
 
-- **[create_named_selection.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/create_named_selection.py)**: ボディ名やキーワードに基づいて、Named Selection を自動作成します。
+- **[create_named_selection.py](./create_named_selection.py)**: ボディ名やキーワードに基づいて、Named Selection を自動作成します。
 
 ## 💡 主な用途
 
 - 大規模モデルにおける境界条件設定の自動化。
 - 特定の命名ルールに従ったボディのグループ化。
 - メッシュ設定や結果評価のための部位特定。
+
+---
+
+[← 戻る](./README.md)
 

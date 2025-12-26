@@ -28,4 +28,4 @@ logger.info("Script started")
 
 ## コンテンツ一覧
 
-- **[logger.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/common-snippets/logger.py)**: コンソールおよびファイルへのログ出力ユーティリティ。
+- **[logger.py](./logger.py)**: コンソールおよびファイルへのログ出力ユーティリティ。

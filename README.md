@@ -6,7 +6,7 @@
 
 ## 🌟 プロジェクト概要
 
-このリポジトリは、Ansysの内部制御（IronPython/C#）をターゲットとした、コピー＆ペーストで即座に動くコードスニペットと、開発環境構築のベストプラクティスを提供します。
+このリポジトリは、Ansysの内部制御（[IronPython](../docs/glossary.md#ironpython)/C#）をターゲットとした、コピー＆ペーストで即座に動くコードスニペットと、開発環境構築のベストプラクティスを提供します。
 
 ### 🎯 ターゲット
 - 日々の解析業務を効率化したい現場のエンジニア
@@ -15,8 +15,8 @@
 
 ### 💡 提供価値
 - 実用的なコードスニペット
-- IronPython (2.7) 特有の制限や落とし穴の回避策
-- ツール間（CAD → Workbench → Mechanical）の連携テクニック
+- [IronPython](../docs/glossary.md#ironpython) (2.7) 特有の制限や落とし穴の回避策
+- ツール間（CAD → [Workbench](../docs/glossary.md#workbench) → [Mechanical](../docs/glossary.md#mechanical)）の連携テクニック
 
 ---
 
@@ -25,7 +25,7 @@
 | カテゴリ | 内容 | リンク |
 | :--- | :--- | :--- |
 | **docs** | 📘 共通ガイド（クイックスタート、環境構築、用語集、トラブルシューティング） | [Link](./docs/) |
-| **workbench** | ⚙️ Workbench Journal (.wbjn) | [Link](./workbench/) |
+| **workbench** | ⚙️ [Workbench Journal](../docs/glossary.md#journal-wbjn) (.wbjn) | [Link](./workbench/) |
 | **mechanical** | 🧊 Mechanical Scripting (Python) | [Link](./mechanical/) |
 | **spaceclaim** | ✏️ SpaceClaim Scripting | [Link](./spaceclaim/) |
 | **interop** | 🌉 ツール間連携 (The Bridge) | [Link](./interop/) |
@@ -63,14 +63,14 @@
 ## 🛠️ 技術ガイドライン
 
 1. **言語仕様**:
-   - 基本は **IronPython 2.7** 互換で記述（`f-string`禁止、`print()`関数の括弧使用推奨）。
+   - 基本は **[IronPython](../docs/glossary.md#ironpython) 2.7** 互換で記述（`f-string`禁止、`print()`関数の括弧使用推奨）。
    - 外部ライブラリ（NumPy, Pandas等）は原則使用禁止（標準環境で動作させるため）。
 2. **動作確認バージョン**:
    - スクリプト冒頭に `# Tested on Ansys 2023 R2` のように確認済みバージョンを記載。
 3. **モジュール性**:
    - 1つのスクリプトで何でもやろうとせず、機能ごとにファイルを分割。
 4. **前提条件**:
-   - スクリプト冒頭の Docstring に、必要な Named Selection や事前設定を明記。
+   - スクリプト冒頭の Docstring に、必要な [Named Selection](../docs/glossary.md#named-selection) や事前設定を明記。
 
 ---
 

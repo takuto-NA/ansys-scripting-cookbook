@@ -38,14 +38,25 @@ selection = Selection.Create(bodies[0].Faces)
 
 ## 📂 セクション
 
-- **[モデリング](/spaceclaim/modeling)**: 形状作成、クリーニング、修正など。
-  - **[clean_geometry.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/spaceclaim/clean_geometry.py)**: 小さいエッジや面の削除、形状の簡略化。
-- **[Named Selection](/spaceclaim/named-selection)**: 面やボディの選択、Named Selection の作成。
+- **[モデリング](./modeling.md)**: 形状作成、クリーニング、修正など。
+  - **[clean_geometry.py](./clean_geometry.py)**: 小さいエッジや面の削除、形状の簡略化。
+- **[Named Selection](./named-selection.md)**: 面やボディの選択、Named Selection の作成。
 
 ## 🚀 実行方法
 
 SpaceClaim 内の **Design (デザイン)** タブ -> **Script (スクリプト)** ボタンを押し、右側のエディタに貼り付けて実行してください。
-詳細は [環境構築ガイド](/docs/setup) を参照してください。
+詳細は [環境構築ガイド](../docs/setup.md) を参照してください。
 
 ## 💡 コツ: 「スクリプトの記録」を活用する
 SpaceClaim のスクリプトエディタにある **Record (記録)** ボタンを押してから GUI 操作を行うと、対応する Python コードが自動生成されます。これをベースにループや条件分岐を追加するのが最も効率的な開発方法です。
+
+## 🔗 関連ドキュメント
+
+- **[クイックスタートガイド](../docs/quickstart.md)**: 初めてのスクリプト実行
+- **[用語集](../docs/glossary.md)**: Ansys スクリプト開発でよく使われる用語
+- **[チートシート](../docs/cheatsheet.md)**: 「〇〇したい」からコードを探す
+- **[トラブルシューティング](../docs/troubleshooting.md)**: よくあるエラーと解決方法
+
+---
+
+[← 戻る](../README.md)

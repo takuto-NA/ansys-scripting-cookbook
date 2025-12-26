@@ -22,12 +22,16 @@ analysis.ExportMechanicalData(r"C:\temp\model.cdb")
 
 ## 🛠️ スニペット一覧
 
-- **[simple_export.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/simple_export.py)**: 最大応力値を取得し、テキストファイルにエクスポートします。
-- **[export_cdb.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/export_cdb.py)**: 解析モデル（メッシュ、境界条件等）を .cdb 形式でエクスポートします。
+- **[simple_export.py](./simple_export.py)**: 最大応力値を取得し、テキストファイルにエクスポートします。
+- **[export_cdb.py](./export_cdb.py)**: 解析モデル（メッシュ、境界条件等）を .cdb 形式でエクスポートします。
 
 ## 💡 主な用途
 
 - 大量ケースの計算結果の自動集計。
 - 特定の部位（Named Selection 等）における平均値・最大値の抽出。
 - レポート作成の自動化。
+
+---
+
+[← 戻る](./README.md)
 

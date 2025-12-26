@@ -36,13 +36,25 @@ model.SendCommand(Language='Python', Command=script)
 
 ## 📂 セクション
 
-- **[基本操作](/workbench/basic-ops)**: プロジェクトの保存、アーカイブ、コンポーネントの追加など。
-- **[プロジェクト更新](/workbench/project-update)**: プロジェクト全体の更新、パラメータセットの操作。
-  - **[batch_run_csv.wbjn](https://github.com/your-org/ansys-scripting-cookbook/blob/main/workbench/batch_run_csv.wbjn)**: CSV ファイルからパラメータを読み込み、連続計算を実行。
+- **[基本操作](./basic-ops.md)**: プロジェクトの保存、アーカイブ、コンポーネントの追加など。
+- **[プロジェクト更新](./project-update.md)**: プロジェクト全体の更新、パラメータセットの操作。
+  - **[batch_run_csv.wbjn](./batch_run_csv.wbjn)**: CSV ファイルからパラメータを読み込み、連続計算を実行。
 
 ## 🚀 実行方法
 
 Workbench の **File** メニュー -> **Scripting** -> **Run Script File...** から、対象の `.wbjn` ファイルを選択してください。
+詳細は [環境構築ガイド](../docs/setup.md) を参照してください。
 
 ## 💡 コメント
 Workbench ジャーナルは GUI で行った操作の多くを記録できます (**File -> Scripting -> Record Journal...**)。複雑なシステム構築の自動化を行う際は、まず記録してコードの雛形を得るのが近道です。
+
+## 🔗 関連ドキュメント
+
+- **[クイックスタートガイド](../docs/quickstart.md)**: 初めてのスクリプト実行
+- **[用語集](../docs/glossary.md)**: Ansys スクリプト開発でよく使われる用語
+- **[チートシート](../docs/cheatsheet.md)**: 「〇〇したい」からコードを探す
+- **[トラブルシューティング](../docs/troubleshooting.md)**: よくあるエラーと解決方法
+
+---
+
+[← 戻る](../README.md)

@@ -41,18 +41,29 @@ Model.Analyses[0].Solve(True)
 
 ## 📂 セクション
 
-- **[ジオメトリ](/mechanical/geometry)**: ジオメトリの操作、Named Selection の作成など。
-- **[メッシュ](/mechanical/mesh)**: メッシュサイズの設定、ローカルサイズコントロール。
-- **[境界条件](/mechanical/boundary-cond)**: 境界条件の設定、材料の割り当て。
-  - **[batch_assign_materials.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/batch_assign_materials.py)**: ボディ名に基づいた材料の一括割り当て。
-- **[後処理](/mechanical/post-processing)**: 結果の抽出、レポート作成。
-  - **[simple_export.py](https://github.com/your-org/ansys-scripting-cookbook/blob/main/mechanical/simple_export.py)**: 最大応力値などのテキスト書き出し。
+- **[ジオメトリ](./geometry.md)**: ジオメトリの操作、Named Selection の作成など。
+- **[メッシュ](./mesh.md)**: メッシュサイズの設定、ローカルサイズコントロール。
+- **[境界条件](./boundary-cond.md)**: 境界条件の設定、材料の割り当て。
+  - **[batch_assign_materials.py](./batch_assign_materials.py)**: ボディ名に基づいた材料の一括割り当て。
+- **[後処理](./post-processing.md)**: 結果の抽出、レポート作成。
+  - **[simple_export.py](./simple_export.py)**: 最大応力値などのテキスト書き出し。
 
 ## 🚀 実行方法
 
 Mechanical 内の **Automation (自動化)** タブ -> **Scripting (スクリプト)** ウィンドウにコードを貼り付けて実行してください。
-詳細は [環境構築ガイド](/docs/setup) を参照してください。
+詳細は [環境構築ガイド](../docs/setup.md) を参照してください。
 
 ## ⚠️ Tips
 - **パフォーマンス**: 大規模モデルでは `DataModel.GetObjectsByType()` をループ内で多用せず、一度変数に格納してください。
-- **APIリファレンス**: 詳細は [API 概要ガイド](/docs/reference/api-overview) を参照してください。
+- **APIリファレンス**: 詳細は [API 概要ガイド](../docs/reference/api-overview.md) を参照してください。
+
+## 🔗 関連ドキュメント
+
+- **[クイックスタートガイド](../docs/quickstart.md)**: 初めてのスクリプト実行
+- **[用語集](../docs/glossary.md)**: Ansys スクリプト開発でよく使われる用語
+- **[チートシート](../docs/cheatsheet.md)**: 「〇〇したい」からコードを探す
+- **[トラブルシューティング](../docs/troubleshooting.md)**: よくあるエラーと解決方法
+
+---
+
+[← 戻る](../README.md)

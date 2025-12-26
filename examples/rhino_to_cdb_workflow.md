@@ -1,6 +1,8 @@
 # 🦏 Rhino から CDB 出力までのエンドツーエンド自動化
 
-Rhino で作成したモデルに色を付け、それをトリガーにして Mechanical で自動メッシュ制御・CDB 出力を行う一連のワークフローを解説します。
+Rhino で作成したモデルに色を付け、それをトリガーにして Mechanical で自動メッシュ制御・[CDB](../docs/glossary.md#cdb) 出力を行う一連のワークフローを解説します。
+
+> **用語**: [CDB](../docs/glossary.md#cdb) (Common Database) は、MAPDL で使用する解析モデルファイル形式です。メッシュ、境界条件、材料情報を含みます。
 
 ## 1. ワークフロー概要
 
@@ -20,15 +22,33 @@ graph LR
 3.  `File > Export Selected` で **STEP** 形式で保存します。
 
 ### ステップ 2: Workbench の設定
-STEP ファイルの色情報を Named Selection として読み込むための設定を行います。
+STEP ファイルの色情報を [Named Selection](../docs/glossary.md#named-selection) として読み込むための設定を行います。
 
 1.  Workbench の **Geometry** コンポーネントを選択します。
+   - プロジェクトツリー（左側のパネル）で **Geometry** コンポーネントをクリックして選択します
 2.  **Properties** パネル（または Details view）で以下を設定します。
-    *   **Named Selections**: `Yes` (チェックを入れる)
-    *   **Named Selection Key**: `Color`
+   - **Properties** パネルは、Geometry コンポーネントを選択した状態で、画面下部または右側に表示されます
+   - **Named Selections**: `Yes` に設定（チェックボックスにチェックを入れる）
+   - **Named Selection Key**: `Color` と入力
+   - これにより、STEP ファイルの色情報が `Color:255.0.0` のような形式の Named Selection として自動的にインポートされます
 
 ### ステップ 3: Mechanical での自動処理
-以下のスクリプトを実行することで、特定の色（赤）が付いた面を自動で探し、細密メッシュを適用して CDB を出力します。
+
+Mechanical を開き、以下のスクリプトを実行します。
+
+1. **Mechanical を開く**
+   - Workbench のプロジェクトツリーで **Model** コンポーネントを右クリック → **Edit** を選択
+   - または、**Model** コンポーネントをダブルクリック
+
+2. **スクリプトウィンドウを開く**
+   - **Automation（自動化）** タブをクリック
+   - **Scripting（スクリプト）** ボタンをクリックしてスクリプトウィンドウを表示
+
+3. **スクリプトを実行**
+   - 以下のスクリプトをコピー＆ペースト
+   - **Run（実行）** ボタンをクリック
+
+以下のスクリプトを実行することで、特定の色（赤）が付いた面を自動で探し、細密メッシュを適用して [CDB](../docs/glossary.md#cdb) を出力します。
 
 ```python
 # Mechanical Script
@@ -37,7 +57,9 @@ import os
 def run_automated_workflow():
     # 1. 赤色 (RGB: 255, 0, 0) に対応する名前付き選択を検索
     # Workbench の設定により "Color:255.0.0" のような名前でインポートされます
+    # すべての Named Selection を取得
     all_ns = DataModel.GetObjectsByType(Ansys.ACT.Automation.Mechanical.NamedSelection)
+    # 名前の中に "255.0.0" を含む Named Selection を検索（赤色に対応）
     target_ns = [ns for ns in all_ns if "255.0.0" in ns.Name]
     
     if not target_ns:
@@ -57,10 +79,14 @@ def run_automated_workflow():
     Model.Mesh.GenerateMesh()
 
     # 4. CDB エクスポート
+    # デスクトップのパスを取得
     desktop = os.path.join(os.environ["USERPROFILE"], "Desktop")
+    # 出力ファイルパスを設定（必要に応じて変更してください）
     export_path = os.path.join(desktop, "output_from_rhino.cdb")
     
+    # 解析システムを取得（最初の解析システムを使用）
     analysis = Model.Analyses[0]
+    # CDB 形式でエクスポート（メッシュ、境界条件、材料情報を含む）
     analysis.ExportMechanicalData(export_path)
     print("CDB exported to: " + export_path)
 

@@ -2,6 +2,8 @@
 
 Rhino で付けた色が、自動的に「メッシュ細密化」や「荷重条件」として Mechanical に伝わり、解析が実行されるまでのワークフローを解説します。
 
+> **このワークフローの特徴**: [Rhino to CDB ワークフロー](./rhino_to_cdb_workflow.md) の機能に加えて、解析実行までを含みます。Workbench 内で完結させたい場合に適しています。
+
 ## 1. 運用ルール (Color Mapping)
 
 このワークフローでは、以下の色と解析条件を紐付けます。
@@ -19,9 +21,24 @@ Rhino で付けた色が、自動的に「メッシュ細密化」や「荷重�
 3.  STEP ファイルとして保存。
 
 ### ステップ 2: Workbench の設定
-1.  Geometry コンポーネントのプロパティで `Named Selections: Yes`, `Named Selection Key: Color` を設定。
+
+[Rhino to CDB ワークフロー](./rhino_to_cdb_workflow.md#ステップ-2-workbench-の設定) と同じ手順です。
+
+1.  Workbench の **Geometry** コンポーネントを選択します。
+2.  **Properties** パネルで以下を設定します。
+   - **Named Selections**: `Yes` に設定（チェックボックスにチェックを入れる）
+   - **Named Selection Key**: `Color` と入力
 
 ### ステップ 3: Mechanical での自動処理スクリプト
+
+1. **Mechanical を開く**
+   - Workbench のプロジェクトツリーで **Model** コンポーネントを右クリック → **Edit** を選択
+
+2. **スクリプトウィンドウを開く**
+   - **Automation（自動化）** タブ → **Scripting（スクリプト）** をクリック
+
+3. **スクリプトを実行**
+   - 以下のスクリプトをコピー＆ペーストして実行
 
 ```python
 # Mechanical Script: Color-based Mesh & Load Assignment

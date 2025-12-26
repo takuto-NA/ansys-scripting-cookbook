@@ -4,19 +4,38 @@
 
 ## 📋 前提条件
 
-- **Ansys 製品がインストールされていること**
-  - Ansys Workbench
-  - Ansys Mechanical（必要に応じて）
-  - Ansys SpaceClaim / Discovery（必要に応じて）
+### Ansys 製品のインストール
+
+このリポジトリのスクリプトを使用するには、以下の Ansys 製品がインストールされている必要があります。
+
+- **Ansys Workbench**（必須）
+  - プロジェクト管理とシステム構築の基盤となる製品です
+  - バージョン: **2023 R2 以降**を推奨（一部のスクリプトは 2022 R2 以降でも動作します）
+- **Ansys Mechanical**（Mechanical スクリプトを使用する場合）
+  - 構造解析の設定と実行を行う製品です
+  - Workbench に含まれる **Static Structural** などのシステムで使用します
+- **Ansys SpaceClaim / Discovery**（SpaceClaim スクリプトを使用する場合）
+  - ジオメトリの作成・編集を行う製品です
+  - 2023 R1 以降では **Ansys Discovery** として統合されています
+
+> **注意**: 各スクリプトの冒頭には動作確認済みのバージョンが記載されています。使用するスクリプトのバージョン要件を確認してください。
+
+### Python の知識
+
 - **基本的な Python の知識**（推奨）
   - 変数、関数、ループなどの基本構文を理解していると理解が早いです
+  - ただし、スクリプトはコピー＆ペーストで動作するため、必須ではありません
+- **IronPython 2.7 の制約**
+  - Ansys の内部スクリプト環境は **IronPython 2.7** です
+  - `f-string` は使用できません（`.format()` を使用）
+  - 詳細は [技術的な落とし穴](./reference/pitfalls.md) を参照してください
 
 ## 🎯 5分で始める
 
 ### ステップ 1: リポジトリをクローンまたはダウンロード
 
 ```bash
-git clone https://github.com/your-org/ansys-scripting-cookbook.git
+git clone <リポジトリURL>
 cd ansys-scripting-cookbook
 ```
 
